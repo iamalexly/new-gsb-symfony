@@ -1,0 +1,44 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}{{ parent() }} - Saisie d'un frais forfait{% endblock %}
+
+{% block body %}
+    <div class="container">
+        <div class="row">
+            <div class="col-12">
+                <h1 class="display-4 pb-3">Saisie d'un frais forfait</h1>
+                {{ form_start(form) }}
+                    <div class="form-group">
+                        {{ form_label(form.fraisForfait) }}
+                        {{ form_widget(form.fraisForfait) }}
+                        {% if form_errors(form.fraisForfait) == true %}
+                            <br /><div class="alert alert-danger" role="alert">
+                            {{ form_errors(form.fraisForfait) }}
+                        </div>
+                        {% endif %}
+                    </div>
+                    <div class="form-group">
+                        {{ form_label(form.dateCreation) }}
+                        {{ form_widget(form.dateCreation) }}
+                        {% if form_errors(form.dateCreation) == true %}
+                            <br /><div class="alert alert-danger" role="alert">
+                            {{ form_errors(form.dateCreation) }}
+                        </div>
+                        {% endif %}
+                    </div>
+                    <div class="form-group">
+                        {{ form_label(form.quantite) }}
+                        {{ form_widget(form.quantite) }}
+                        {% if form_errors(form.quantite) == true %}
+                            <br /><div class="alert alert-danger" role="alert">
+                            {{ form_errors(form.quantite) }}
+                        </div>
+                        {% endif %}
+                    </div>
+                    {{ form_row(form.submit) }}
+                {{ form_end(form) }}
+            </div>
+        </div>
+    </div>
+{% endblock %}
+

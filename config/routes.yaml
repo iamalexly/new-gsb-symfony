@@ -1,0 +1,39 @@
+app_homepage:
+    path: /
+    controller: App\Controller\DefaultController::index
+
+app_login:
+    path: /login
+    controller: App\Controller\SecurityController::login
+
+app_logout:
+    path: /logout
+    controller: App\Controller\SecurityController::logout
+
+app_read_fiches_frais:
+    path: /mes-fiches-de-frais
+    controller: App\Controller\FicheFraisController::showAllByUser
+
+app_read_details_fiche_frais:
+    path: /mes-fiches-de-frais/details/{idFiche}
+    controller: App\Controller\FicheFraisController::showDetailsByUser
+    requirements:
+        idFiche: '\d+'
+
+app_new_frais_hors_forfait:
+    path: /saisie-frais-hors-forfait
+    controller: App\Controller\LigneFraisHorsForfaitController::new
+
+app_new_frais_forfait:
+    path: /saisie-frais-forfait
+    controller: App\Controller\LigneFraisForfaitController::new
+
+app_manage_fiches_frais:
+    path: /gerer-fiches-frais
+    controller: App\Controller\FicheFraisController::manageAll
+
+app_manage_details_fiche_frais:
+    path: /gerer-fiches-frais/details/{idFiche}
+    controller: App\Controller\FicheFraisController::manageDetails
+    requirements:
+        idFiche: '\d+'

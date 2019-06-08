@@ -1,0 +1,25 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}{{ parent() }} - Accueil{% endblock %}
+
+{% block body %}
+<div class="container">
+    <div class="row">
+        <div class="col-12">
+
+            <h1 class="display-4 pb-3">Bonjour {{ user.prenom }} {{ user.nom }} !</h1>
+            <p>Recapitulatif de vos informations :</p>
+            <ul class="list-group list-group-flush">
+                <li class="list-group-item">Email : {{ user.email }}</li>
+                <li class="list-group-item">Nom : {{ user.nom }}</li>
+                <li class="list-group-item">Prénom : {{ user.prenom }}</li>
+                <li class="list-group-item">Rôle : {% if user.roles[0] == 'ROLE_USER' %}Utilisateur{% elseif user.roles[0] == 'ROLE_COMPTABLE' %}Comptable{% endif %}</li>
+                <li class="list-group-item">Adresse : {{ user.adresse }}</li>
+                <li class="list-group-item">Code postal : {{ user.cp }}</li>
+                <li class="list-group-item">Ville : {{ user.ville }}</li>
+                <li class="list-group-item">Date d'embauche : {{ user.dateEmbauche|date('d/m/Y') }}</li>
+            </ul>
+        </div>
+    </div>
+</div>
+{% endblock %}

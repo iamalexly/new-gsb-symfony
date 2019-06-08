@@ -1,0 +1,42 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}{{ parent() }} - Connexion{% endblock %}
+
+{% block body %}
+    <style>
+        body,html{
+            height:100%;
+        }
+
+        .card {
+            border: 2px solid #8c959c;
+        }
+    </style>
+
+    <div class="container h-100">
+        <div class="row h-100 justify-content-center align-items-center">
+            <div class="col-12 mt-5">
+                <div class="card">
+                    <div class="card-body">
+                        <form method="post">
+                            <p class="text-center"><img src="{{ asset('assets/img/logo-gsb.png') }}" alt="" width="200"></p>
+                            {% if error %}
+                                <div class="alert alert-danger">{{ error.messageKey|trans(error.messageData, 'security') }}</div>
+                            {% endif %}
+                            <div class="form-group">
+                                <label for="inputEmail" class="sr-only">Email</label>
+                                <input type="email" value="{{ last_username }}" name="email" id="inputEmail" class="form-control" placeholder="Email" required autofocus>
+                            </div>
+                            <div class="form-group">
+                                <label for="inputPassword" class="sr-only">Mot de passe</label>
+                                <input type="password" name="password" id="inputPassword" class="form-control" placeholder="Mot de passe" required>
+                            </div>
+                            <input type="checkbox" name="_remember_me" checked="true" style="display:none;">
+                            <button class="btn btn-outline-info btn-block" type="submit">Connexion</button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+{% endblock %}

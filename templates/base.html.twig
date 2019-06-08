@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="fr">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+        <title>{% block title %}GSB Frais{% endblock %}</title>
+        <link rel="stylesheet" href="{{ asset('assets/css/bootstrap.css') }}">
+        {% block stylesheets %}{% endblock %}
+    </head>
+    <body>
+        {% if is_granted(['ROLE_USER', 'ROLE_COMPTABLE']) %}
+            <nav class="navbar navbar-expand-lg navbar-dark bg-dark mb-5">
+                <a class="navbar-brand" href="{{ path('app_homepage') }}">GSB Frais</a>
+                <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+                <div class="collapse navbar-collapse" id="navbarNav">
+                    <ul class="navbar-nav mr-auto">
+                        <li class="nav-item">
+                            <a class="nav-link" href="{{ path('app_homepage') }}">Accueil</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="{{ path('app_read_fiches_frais') }}">Consulter mes fiches de frais</a>
+                        </li>
+                        <li class="nav-item dropdown">
+                            <a class="btn btn-info dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                Saisir des frais
+                            </a>
+                            <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                                <a class="dropdown-item" href="{{ path('app_new_frais_forfait') }}">Frais forfait</a>
+                                <a class="dropdown-item" href="{{ path('app_new_frais_hors_forfait') }}">Frais hors forfait</a>
+                            </div>
+                        </li>
+                    </ul>
+                    <ul class="navbar-nav">
+                        {% if is_granted('ROLE_COMPTABLE') %}
+                            <li class="nav-item">
+                                <a class="nav-link" href="{{ path('app_manage_fiches_frais') }}">Gérer les fiches de frais</a>
+                            </li>
+                        {% endif %}
+                        <li class="nav-item">
+                            <a class="nav-link" href="{{ path('app_logout') }}">Déconnexion</a>
+                        </li>
+                    </ul>
+                </div>
+            </nav>
+        {% endif %}
+
+        {% block body %}{% endblock %}
+
+        <script src="{{ asset('assets/js/jquery-3.2.1.slim.min.js') }}"></script>
+        <script src="{{ asset('assets/js/popper.min.js') }}"></script>
+        <script src="{{ asset('assets/js/bootstrap.min.js') }}"></script>
+        <script src="https://unpkg.com/ionicons@4.5.5/dist/ionicons.js"></script>
+        {% block javascripts %}{% endblock %}
+    </body>
+</html>
