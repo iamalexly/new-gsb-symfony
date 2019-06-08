@@ -80,12 +80,12 @@ class UserFixtures extends Fixture
         $manager->persist($user);
 
         $user = new User();
-        $user->setEmail('alexlebaillypro@gmail.com');
+        $user->setEmail('admin@gsb.com');
         $user->setRoles(['ROLE_COMPTABLE']);
         $user->setPassword($this->passwordEncoder->encodePassword($user, 'password'));
         $user->setNom('Lebailly');
         $user->setPrenom('Alexandre');
-        $user->setAdresse('48 Rue Dr.SCHWEITZER');
+        $user->setAdresse('48 Rue Mandela');
         $user->setCp(42100);
         $user->setVille('Saint-Etienne');
         $user->setDateEmbauche(new DateTime());
